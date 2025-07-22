@@ -1,0 +1,26 @@
+/* Add your custom fonts here */
+
+/* Example - replace with your actual font */
+@font-face {
+  font-family: 'Planetary-Sim';
+  src: url('/fonts/Planetary-Sim.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Improves loading performance */
+}
+
+/* If you have multiple weights/styles */
+@font-face {
+  font-family: 'Planetary-Sim';
+  src: url('/fonts/Planetary-Sim-bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* You can then use the font like this: */
+/*
+.custom-text {
+  font-family: 'Planetary-Sim';, Arial, sans-serif;
+}
+*/
