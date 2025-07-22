@@ -44,91 +44,6 @@ jobs:
           mkdir -p public-deploy/storybook
           cp -r storybook-static/* public-deploy/storybook/
           
-          # Create index.html that links to both apps
-          cat > public-deploy/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Planetary Sim - Project Hub</title>
-              <style>
-                  body {
-                      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-                      margin: 0;
-                      padding: 0;
-                      min-height: 100vh;
-                      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                  }
-                  .container {
-                      text-align: center;
-                      background: white;
-                      padding: 3rem;
-                      border-radius: 20px;
-                      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-                      max-width: 500px;
-                      margin: 2rem;
-                  }
-                  h1 {
-                      color: #333;
-                      margin-bottom: 1rem;
-                      font-size: 2.5rem;
-                  }
-                  p {
-                      color: #666;
-                      margin-bottom: 2rem;
-                      font-size: 1.1rem;
-                  }
-                  .links {
-                      display: flex;
-                      gap: 1rem;
-                      flex-direction: column;
-                  }
-                  .link-button {
-                      display: inline-block;
-                      padding: 1rem 2rem;
-                      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                      color: white;
-                      text-decoration: none;
-                      border-radius: 10px;
-                      font-weight: 600;
-                      transition: transform 0.2s ease, box-shadow 0.2s ease;
-                  }
-                  .link-button:hover {
-                      transform: translateY(-2px);
-                      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-                  }
-                  .storybook-link {
-                      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-                  }
-                  @media (min-width: 768px) {
-                      .links {
-                          flex-direction: row;
-                          justify-content: center;
-                      }
-                  }
-              </style>
-          </head>
-          <body>
-              <div class="container">
-                  <h1>🪐 Planetary Sim</h1>
-                  <p>Welcome to the Planetary Simulation project. Choose an application to explore:</p>
-                  <div class="links">
-                      <a href="./app.html" class="link-button">
-                          🚀 Main Application
-                      </a>
-                      <a href="./storybook/" class="link-button storybook-link">
-                          📚 Component Library
-                      </a>
-                  </div>
-              </div>
-          </body>
-          </html>
-          EOF
-          
           # Rename the main app's index.html to app.html
           mv public-deploy/index.html public-deploy/app.html
           
@@ -229,6 +144,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

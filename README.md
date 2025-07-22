@@ -62,16 +62,28 @@ This project includes a collection of reusable React components:
 
 The project is automatically deployed to GitHub Pages using GitHub Actions when changes are pushed to the main branch.
 
-### Manual Deployment
+### Setting Up GitHub Pages
 
-To deploy manually:
+1. **Enable GitHub Pages in your repository:**
+   - Go to Settings → Pages
+   - Under "Source", select "GitHub Actions"
 
-1. Build the project:
+2. **Push your changes:**
    ```bash
-   npm run deploy
+   git add .
+   git commit -m "Setup GitHub Pages deployment"
+   git push origin main
    ```
 
-2. The GitHub Action will automatically deploy to GitHub Pages
+3. **Monitor deployment:**
+   - Check the "Actions" tab in your GitHub repository
+   - The deployment will be available at: `https://free1f.github.io/planetary-sim/`
+
+### Troubleshooting
+
+- **npm ci error**: Make sure `package-lock.json` is included in your repository
+- **Build failures**: Check the Actions tab for detailed error logs
+- **404 errors**: Ensure GitHub Pages is enabled and the repository is public
 
 ## 🔧 Technical Stack
 
